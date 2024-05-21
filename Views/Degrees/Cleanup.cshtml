@@ -1,0 +1,35 @@
+﻿@model List<ResumeApp.Models.Degrees>
+
+@{
+    ViewData["Title"] = "Cleanup";
+}
+
+<h1>Cleanup</h1>
+
+<h4>Degrees</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>           
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var degree in Model)
+        {
+            <tr>               
+                <td>@degree.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form asp-action="CleanupConfirmed" method="post">
+    <input type="submit" value="Delete All" class="btn btn-danger" /> |
+    <a asp-action="Index" class="btn btn-default">Back to List</a>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
